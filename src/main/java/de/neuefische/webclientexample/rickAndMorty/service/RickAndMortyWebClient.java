@@ -1,5 +1,6 @@
-package de.neuefische.webclientexample.rickAndMorty;
+package de.neuefische.webclientexample.rickAndMorty.service;
 
+import de.neuefische.webclientexample.rickAndMorty.model.CharacterResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;

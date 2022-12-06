@@ -1,5 +1,7 @@
-package de.neuefische.webclientexample.rickAndMorty;
+package de.neuefische.webclientexample.rickAndMorty.controller;
 
+import de.neuefische.webclientexample.rickAndMorty.model.CharacterResponse;
+import de.neuefische.webclientexample.rickAndMorty.service.RickAndMortyWebClient;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

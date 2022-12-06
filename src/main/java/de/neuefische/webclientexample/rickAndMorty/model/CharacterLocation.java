@@ -1,4 +1,4 @@
-package de.neuefische.webclientexample.rickAndMorty;
+package de.neuefische.webclientexample.rickAndMorty.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
