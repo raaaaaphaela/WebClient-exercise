@@ -15,7 +15,12 @@ public class RickAndMortyController {
     private RickAndMortyWebClient webClient;
 
     @GetMapping()
-    public  List<CharacterResponse> makeApiCall() {
+    public  List<CharacterResponse> getAllCharacter() {
         return webClient.getAllCharacters();
+    }
+
+    @GetMapping("/alive")
+    public  List<CharacterResponse> getAllAliveCharacter() {
+        return webClient.getAllAliveCharacters();
     }
 }

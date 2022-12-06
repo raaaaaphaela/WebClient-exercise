@@ -12,10 +12,22 @@ import java.util.stream.Collectors;
 public class RickAndMortyWebClient {
 
     public List<CharacterResponse> getAllCharacters() {
-        // GET
+
         WebClient webClient = WebClient.create("https://rickandmortyapi.com/api/character");
 
         Flux<CharacterResponse> response = Objects.requireNonNull(webClient.get()
+                .retrieve()
+                .bodyToFlux(CharacterResponse.class));
+
+        return response.collect(Collectors.toList()).share().block();
+    }
+
+    public List<CharacterResponse> getAllAliveCharacters() {
+
+        WebClient webClient = WebClient.create("https://rickandmortyapi.com/api/character");
+
+        Flux<CharacterResponse> response = Objects.requireNonNull(webClient.get()
+                        .uri("/?status=alive")
                 .retrieve()
                 .bodyToFlux(CharacterResponse.class));
 
