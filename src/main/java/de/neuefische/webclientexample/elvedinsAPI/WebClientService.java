@@ -1,7 +1,6 @@
 package de.neuefische.webclientexample.elvedinsAPI;
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -11,7 +10,7 @@ import java.util.Objects;
 @Service
 public class WebClientService {
 
-    public HttpStatusCode makeApiCall() {
+    public Message makeApiCall() {
         // GET
         WebClient webClient = WebClient.create("https://eoq2vuf7lltn3qi.m.pipedream.net");
 
@@ -24,16 +23,16 @@ public class WebClientService {
 
 
         // POST
-        WebClient webClient2 = WebClient.create("https://eokz7vcsigzeiih.m.pipedream.net");
+        WebClient postWebClient = WebClient.create("https://eokz7vcsigzeiih.m.pipedream.net");
 
         assert animal != null;
-        HttpStatusCode res = Objects.requireNonNull(webClient2.post()
+        Message res = Objects.requireNonNull(postWebClient.post()
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .bodyValue("Ich mag diese Antwort " + animal.getDescription())
+                        .bodyValue(new Message("Ich mag diese Antwort: " + animal.getDescription()))
                         .retrieve()
-                        .toBodilessEntity()
+                        .toEntity(Message.class)
                         .block())
-                .getStatusCode();
+                .getBody();
 
         return res;
 

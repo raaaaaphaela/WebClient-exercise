@@ -1,7 +1,6 @@
 package de.neuefische.webclientexample.elvedinsAPI;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +14,6 @@ public class APIController {
 
     @GetMapping()
     public String makeApiCall() {
-        HttpStatusCode res = service.makeApiCall();
-        System.out.println(res);
-        return res.toString();
+        return service.makeApiCall().getMessage();
     }
 }
